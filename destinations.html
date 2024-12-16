@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon_io/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon_io/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon_io/favicon-16x16.png">
+<link rel="manifest" href="favicon_io/site.webmanifest">
+    <title>Emirates Inspiration</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: black;
+            padding: 1rem 2rem;
+            
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar .logo img {
+            max-height: 50px;
+        }
+
+        .navbar .menu-toggle {
+            display: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: white;
+             margin-left: auto;
+        }
+
+        .navbar .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .navbar .nav-links a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .navbar .nav-links a:hover {
+            color: #ffcc00;
+        }
+
+        .navbar .nav-links .dropdown {
+            position: relative;
+        }
+
+        .navbar .nav-links .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: white;
+            color: black;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            overflow: hidden;
+            z-index: 999;
+        }
+
+        .navbar .nav-links .dropdown-content a {
+            display: block;
+            padding: 10px 15px;
+            color: black;
+            text-decoration: none;
+            font-size: 14px;
+            transition: background-color 0.3s;
+        }
+
+        .navbar .nav-links .dropdown-content a:hover {
+            background-color: #f5f5f5;
+        }
+
+        .navbar .nav-links .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        .hero {
+            text-align: center;
+            padding: 2rem;
+            background-color: #f5f5f5;
+        }
+
+        .hero img {
+            width: 100%;
+            max-height: 400px;
+            object-fit: cover;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin: 1rem 0;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #555;
+            margin-bottom: 1rem;
+        }
+        .destinations {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 2rem;
+            background-color: #fff;
+        }
+
+        .destination {
+            text-align: center;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            background-color: #fafafa;
+        }
+
+        .destination img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .destination h2 {
+            font-size: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .destination p {
+            font-size: 1rem;
+            color: #555;
+            padding: 0 1rem 1rem;
+        }
+
+        .destination:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        @media (max-width: 768px) {
+            .navbar .menu-toggle {
+                display: block;
+            }
+
+            .navbar .nav-links {
+                display: none;
+                flex-direction: column;
+                background-color: black;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                gap: 0;
+                padding: 0;
+            }
+
+            .navbar .nav-links.active {
+                display: flex;
+            }
+
+            .navbar .nav-links a {
+                padding: 1rem;
+                border-bottom: 1px solid #333;
+            }
+
+            .navbar .nav-links a:last-child {
+                border-bottom: none;
+            }
+        }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .destination img {
+                height: 150px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .navbar {
+                padding: 1rem;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero p {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <img src="IMAGE/Emirates-logo.png" alt="Emirates">
+            </div>
+            <i class="fas fa-bars menu-toggle" aria-label="Menu"></i>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="destinations.html">Destinations</a></li>
+                <li class="dropdown">
+                    <a href="#">Services <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown-content">
+                        <a href="flights.html">Flights</a>
+                    </div>
+                </li>
+                <li><a href="signup.html">Signup</a></li>
+                <li><a href="login.html">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <img src="IMAGE/mountain.jpg" alt="Destinations du monde" class="hero-image">
+            <h1>Trouvez l'inspiration pour vos vacances</h1>
+            <p>Si vous êtes à la recherche d'idées de destinations pour votre prochain voyage, découvrez nos suggestions.</p>
+        </section>
+
+        <section class="destinations" id="destinations">
+            <div class="destination">
+                <img src="IMAGE/dubai.jpg" alt="Dubaï">
+                <h2>Dubaï</h2>
+                <p>Dubaï est une ville incroyable qui mélange modernité et traditions...<br>*À partir de 1664 TND*</p>
+            </div>
+            <div class="destination">
+                <img src="IMAGE/paris.jpg" alt="France">
+                <h2>France</h2>
+                <p>Explorez la richesse culturelle et historique de la France...</p>
+            </div>
+            <div class="destination">
+                <img src="IMAGE/amsterdam.jpg" alt="Amsterdam">
+                <h2>pays-bas</h2>
+                <p>Amsterdam offre une atmosphère unique avec ses canaux...</p>
+            </div>
+            <div class="destination">
+                <img src="IMAGE/italy.jpg" alt="Italie">
+                <h2>Italie</h2>
+                <p>Partez à la découverte de l'Italie, célèbre pour sa cuisine, son art et ses paysages.</p>
+            </div>
+            <div class="destination">
+                <img src="IMAGE/thailand.jpg" alt="Thaïlande">
+                <h2>Thaïlande</h2>
+                <p>La Thaïlande est réputée pour ses plages paradisiaques, ses temples et sa cuisine unique.</p>
+            </div>
+            <div class="destination">
+                <img src="IMAGE/istanbul.jpg" alt="Istanbul">
+                <h2>Istanbul</h2>
+                <p>Istanbul combine une riche histoire, une culture fascinante et une architecture magnifique.</p>
+            </div>
+            <div class="destination">
+                <img src="IMAGE/australie.jpg" alt="Australie">
+                <h2>Australie</h2>
+                <p>Explorez la nature sauvage de l'Australie, ses plages magnifiques et sa faune unique.</p>
+            </div>
+            <div class="destination">
+                <img src="IMAGE/spain.jpg" alt="Espagne">
+                <h2>Espagne</h2>
+                <p>Laissez-vous séduire par les festivals vibrants, la gastronomie et l'histoire fascinante de l'Espagne.</p>
+            </div>
+            <div class="destination">
+                <img src="IMAGE/philippine.jpg" alt="Philippines">
+                <h2>Philippines</h2>
+                <p>Les Philippines offrent des plages idylliques, des lagons et une biodiversité spectaculaire.</p>
+            </div>
+            <div class="destination">
+                <img src="IMAGE/egypte.jpg" alt="Égypte">
+                <h2>Égypte</h2>
+                <p>Explorez les merveilles de l'Égypte, des pyramides antiques au Nil majestueux.</p>
+            </div>
+            <div class="destination">
+                <img src="IMAGE/suisse.jpg" alt="Suisse">
+                <h2>switzerland</h2>
+                <p>Découvrez les Alpes suisses, des paysages époustouflants et des villes charmantes comme Zurich et Genève.</p>
+            </div>
+            <div class="destination">
+                <img src="IMAGE/japan.jpg" alt="Japon">
+                <h2>Japon</h2>
+                <p>Le Japon offre une fusion unique entre tradition et modernité, avec des temples, des gratte-ciels et des cerisiers en fleurs.</p>
+            </div>
+        </section>
+    </main>
+    <script>
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>

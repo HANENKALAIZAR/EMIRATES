@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Réservez Votre Vol</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon_io/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon_io/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon_io/favicon-16x16.png">
+<link rel="manifest" href="favicon_io/site.webmanifest">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            color: #333;
+        }
+        .video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: black;
+            padding: 1rem 2rem;
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar .logo img {
+            max-height: 50px;
+        }
+
+        .navbar .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: white;
+        }
+
+        .navbar .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .navbar .nav-links a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .navbar .nav-links a:hover {
+            color: #ffcc00;
+        }
+
+        .navbar .nav-links .dropdown {
+            position: relative;
+        }
+
+        .navbar .nav-links .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: white;
+            color: black;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            overflow: hidden;
+            z-index: 999;
+        }
+
+        .navbar .nav-links .dropdown-content a {
+            display: block;
+            padding: 10px 15px;
+            color: black;
+            text-decoration: none;
+            font-size: 14px;
+            transition: background-color 0.3s;
+        }
+
+        .navbar .nav-links .dropdown-content a:hover {
+            background-color: #f5f5f5;
+        }
+
+        .navbar .nav-links .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        .reservation-section {
+            padding: 40px 20px;
+            text-align: center;
+            color: white; 
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+
+        .reservation-section h1 {
+            color: red;
+            margin-bottom: 20px;
+        }
+
+        .form-container {
+            background: rgba(255, 255, 255, 0.8); 
+            padding: 20px;
+            margin: auto;
+            max-width: 600px;
+            display: flex;
+            flex-direction: column;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 20px;
+            font-size: 16px;
+        }
+
+        button {
+            background: red;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #b0174a;
+        }
+        .promo-section {
+            padding: 20px;
+            text-align: center;
+            color: white; 
+        }
+
+        .promo-section h2 {
+            margin-bottom: 20px;
+        }
+
+        .promo-images {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .promo-images img {
+            max-width: 100%;
+            height: auto;
+            flex: 1 1 calc(50% - 20px);
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        @media (max-width: 768px) {
+            .form-container {
+                max-width: 100%;
+            }
+
+            .promo-images img {
+                flex: 1 1 calc(100% - 20px);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar .menu-toggle {
+                display: block;
+            }
+
+            .navbar .nav-links {
+                display: none;
+                flex-direction: column;
+                background-color: black;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                gap: 0;
+                padding: 0;
+            }
+
+            .navbar .nav-links.active {
+                display: flex;
+            }
+
+            .navbar .nav-links a {
+                padding: 1rem;
+                border-bottom: 1px solid #333;
+            }
+
+            .navbar .nav-links a:last-child {
+                border-bottom: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <video class="video-background" autoplay loop muted>
+        <source src="IMAGE/Welcome to the Next Era of Emirates .mp4" type="video/mp4">
+        
+    </video>
+
+    <nav class="navbar">
+        <div class="logo">
+            <img src="IMAGE/Emirates-logo.png" alt="Emirates">
+        </div>
+        <i class="fas fa-bars menu-toggle" aria-label="Menu"></i>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="destinations.html">Destinations</a></li>
+            <li class="dropdown">
+                <a href="#">Services <i class="fas fa-chevron-down"></i></a>
+                <div class="dropdown-content">
+                    <a href="flights.html">Flights</a>
+                </div>
+            </li>
+            <li><a href="signup.html">Signup</a></li>
+            <li><a href="login.html">Login</a></li>
+        </ul>
+    </nav>
+    <main>
+        <section class="reservation-section">
+            <h1>Réservez Votre Vol</h1>
+            <div class="form-container">
+                <form>
+                    <div class="form-group">
+                        <label for="departure">
+                            <i class="fa fa-plane-departure"></i> Aéroport de départ
+                        </label>
+                        <input type="text" id="departure" placeholder="Ex: Tunis (TUN)">
+                    </div>
+                    <div class="form-group">
+                        <label for="arrival">
+                            <i class="fa fa-plane-arrival"></i> Aéroport d'arrivée
+                        </label>
+                        <input type="text" id="arrival" placeholder="Ex: Amsterdam (AMS)">
+                    </div>
+                    <div class="form-group">
+                        <label for="date">
+                            <i class="fa fa-calendar"></i> Date de départ
+                        </label>
+                        <input type="date" id="date">
+                    </div>
+                    <div class="form-group">
+                        <label for="class">
+                            <i class="fa fa-chair"></i> Classe
+                        </label>
+                        <select id="class">
+                            <option value="economy">Économique</option>
+                            <option value="business">Business</option>
+                            <option value="first">Première classe</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="passengers">
+                            <i class="fa fa-users"></i> Nombre de passagers
+                        </label>
+                        <input type="number" id="passengers" min="1" max="10" value="1">
+                    </div>
+                    <button type="submit">Réserver</button>
+                </form>
+            </div>
+        </section>
+        <section class="promo-section">
+            <h2>Les Offres</h2>
+            <div class="promo-images">
+                <img src="IMAGE/promo1.jpg" alt="Dubai">
+                <img src="IMAGE/promo2.jpg" alt="Promotions">
+            </div>
+        </section>
+    </main>
+
+    <script>
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Créer un Compte</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon_io/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon_io/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon_io/favicon-16x16.png">
+<link rel="manifest" href="favicon_io/site.webmanifest">
+    <style>
+      body { 
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url('IMAGE/emirates-a380.JPG'); 
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    background-attachment: fixed; 
+    color: #333;
+    }
+    header {
+        background-color: black;
+        padding: 10px 20px;
+    }
+
+    .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: black;
+            padding: 1rem 2rem;
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar .logo img {
+            max-height: 50px;
+        }
+
+        .navbar .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: white;
+        }
+
+        .navbar .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .navbar .nav-links a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .navbar .nav-links a:hover {
+            color: #ffcc00;
+        }
+
+        .navbar .nav-links .dropdown {
+            position: relative;
+        }
+
+        .navbar .nav-links .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: white;
+            color: black;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            overflow: hidden;
+            z-index: 999;
+        }
+
+        .navbar .nav-links .dropdown-content a {
+            display: block;
+            padding: 10px 15px;
+            color: black;
+            text-decoration: none;
+            font-size: 14px;
+            transition: background-color 0.3s;
+        }
+
+        .navbar .nav-links .dropdown-content a:hover {
+            background-color: #f5f5f5;
+        }
+
+        .navbar .nav-links .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .signup-section {
+            padding: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: calc(100vh - 70px);
+        }
+
+        .form-container {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .form-container h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #d81b60;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .form-group input {
+            width: 90%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .form-group small {
+            color: #888;
+            font-size: 12px;
+        }
+
+        .submit-btn {
+            
+            width: 50%;
+            padding: 10px;
+            background-color: red;
+            border: none;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background-color: #b0174a;
+        }
+
+        .error-message {
+            color: red;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+        .form-footer {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .form-footer a {
+            color: #d81b60;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .form-footer a:hover {
+            color: #b0174a;
+        }
+        footer {
+            text-align: center;
+            margin-top: 20px;
+            color: #777;
+        }
+        @media (max-width: 768px) {
+            .navbar .menu-toggle {
+                display: block;
+            }
+
+            .navbar .nav-links {
+                display: none; 
+                flex-direction: column;
+                background-color: black;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                gap: 0;
+                padding: 0;
+            }
+
+            .navbar .nav-links.active {
+                display: flex; 
+            }
+
+            .navbar .nav-links a {
+                padding: 1rem;
+                border-bottom: 1px solid #333;
+            }
+
+            .navbar .nav-links a:last-child {
+                border-bottom: none;
+            }
+        }
+        @media (max-width: 480px) {
+            .form-container {
+                width: 90%; 
+        margin: 0 auto; 
+        padding: 20px;
+            }
+
+            .form-container h1 {
+                font-size: 1.5em;
+            }
+
+            .submit-btn {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <img src="IMAGE/Emirates-logo.png" alt="Emirates">
+            </div>
+            <i class="fas fa-bars menu-toggle"></i>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="destinations.html">Destinations</a></li>
+                <li class="dropdown">
+                    <a href="#">Services <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown-content">
+                        <a href="flights.html">Flights</a>
+                    </div>
+                </li>
+                <li><a href="signup.html">Signup</a></li>
+                <li><a href="login.html">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="signup-section">
+            <div class="form-container">
+                <h1>Créer un Compte</h1>
+                <form id="signupForm">
+                    <div class="form-group">
+                        <label for="username">Nom d'utilisateur</label>
+                        <input type="text" id="username" placeholder="Entrez votre nom d'utilisateur" required>
+                        <div id="usernameError" class="error-message"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Adresse email</label>
+                        <input type="email" id="email" placeholder="Entrez votre email" required>
+                        <div id="emailError" class="error-message"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Mot de passe</label>
+                        <input type="password" id="password" placeholder="Entrez un mot de passe" required>
+                        <small>Votre mot de passe doit contenir au moins 8 caractères.</small>
+                        <div id="passwordError" class="error-message"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirm-password">Confirmer le mot de passe</label>
+                        <input type="password" id="confirm-password" placeholder="Confirmez votre mot de passe" required>
+                        <div id="confirmPasswordError" class="error-message"></div>
+                    </div>
+                    <button type="submit" class="submit-btn">S'inscrire</button>
+                    <div class="form-footer">
+                        <p>Vous avez deja un compte ? <a href="login.html">connecter a votre compte</a></p>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+    <script>
+        document.getElementById("signupForm").addEventListener("submit", function(e) {
+            e.preventDefault(); 
+            document.getElementById("usernameError").textContent = '';
+            document.getElementById("emailError").textContent = '';
+            document.getElementById("passwordError").textContent = '';
+            document.getElementById("confirmPasswordError").textContent = '';
+            let isValid = true;
+            const username = document.getElementById("username").value.trim();
+            const email = document.getElementById("email").value.trim();
+            const password = document.getElementById("password").value.trim();
+            const confirmPassword = document.getElementById("confirm-password").value.trim();
+            if (!username) {
+                document.getElementById("usernameError").textContent = "Le nom d'utilisateur est requis";
+                isValid = false;
+            }
+            if (!email) {
+                document.getElementById("emailError").textContent = "L'email est incorrect";
+                isValid = false;
+            } else if (!validateEmail(email)) {
+                document.getElementById("emailError").textContent = "Veuillez entrer un email valide";
+                isValid = false;
+            }
+            if (!password) {
+                document.getElementById("passwordError").textContent = "Le mot de passe est incorrect";
+                isValid = false;
+            } else if (password.length < 8) {
+                document.getElementById("passwordError").textContent = "Le mot de passe doit contenir au moins 8 caractères";
+                isValid = false;
+            }
+            if (password !== confirmPassword) {
+                document.getElementById("confirmPasswordError").textContent = "Les mots de passe ne correspondent pas";
+                isValid = false;
+            }
+
+            if (isValid) {
+                alert("LE COMPTE EST CREER!");
+            }
+        });
+        function validateEmail(email) {
+            const regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+            return regex.test(email);
+        }
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>
